@@ -6,7 +6,8 @@
   <div class="logo">
     <a href="/">
       <img src="/images/turfio-logo.png" alt="Turfio Logo" />
-      <span>Turfio</span>
+      <span class="turfio-text">Turfio</span>
+      <span class="filters-text"> Filters</span>
     </a>
   </div>
   <nav>
@@ -16,6 +17,7 @@
       <li><a href="#products" class:active={$page.url.hash === '#products'}>Products</a></li>
       <li><a href="#testimonials" class:active={$page.url.hash === '#testimonials'}>Testimonials</a></li>
       <li><a href="#contact" class:active={$page.url.hash === '#contact'}>Contact</a></li>
+      <li><a href="/catalog.pdf" target="_blank" rel="noopener noreferrer">Download Catalog</a></li>
     </ul>
   </nav>
 </header>
@@ -45,9 +47,18 @@
     margin-right: 10px;
   }
 
-  .logo span {
-    font-size: 1.5rem;
+  .logo .turfio-text {
+    font-family: 'Georgia', serif; /* More decorative font for "Turfio" */
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #ff6f61; /* Accent color for "Turfio" */
+  }
+
+  .logo .filters-text {
+    font-family: 'Arial Black', Gadget, sans-serif; /* Bold sans-serif for "Filters" */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333; /* Dark charcoal for "Filters" */
   }
 
   nav ul {
@@ -68,5 +79,17 @@
   nav a:hover,
   nav a.active {
     color: #00A99D;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 </style>

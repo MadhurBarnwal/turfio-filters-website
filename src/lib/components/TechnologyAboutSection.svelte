@@ -26,7 +26,7 @@
       </div>
       <div class="animation-placeholder" transition:fade={{ duration: 500, delay: 400 }}>
         <!-- Placeholder for the exploded-view animation -->
-        <p>Exploded-view animation coming soon!</p>
+        <img src="/images/filter_about.jpg" alt="Turfio Filters" class="filters-image" />
       </div>
     </div>
   {/if}
@@ -63,11 +63,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    background-color: #f0f0f0;
+    height: 500px; /* Reduced height by 20px to crop bottom */
+    overflow: hidden; /* Hide overflowing parts of the image */
+    background-color: transparent;
     border-radius: 10px;
-    color: #999;
-    font-style: italic;
+  }
+
+  .filters-image {
+    width: 100%; /* Ensure image takes full width of container */
+    height: calc(100% 0px); /* Reduce image height by 20px from bottom */
+    object-fit: cover; /* Crop image to cover the container */
+    object-position: top; /* Align image to the top */
   }
 
   @media (max-width: 768px) {

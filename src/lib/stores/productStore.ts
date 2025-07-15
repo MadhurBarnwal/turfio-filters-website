@@ -4,30 +4,37 @@ export interface Product {
   id: number;
   name: string;
   description: string;
-  price: number;
+  price: number; // Keeping price for now, but it won't be displayed in ProductCard
   imageUrl: string;
 }
 
 export const products = writable<Product[]>([
   {
     id: 1,
-    name: 'Turfio TCF-1010',
-    description: 'Super-capacity cabin air purifier for enhanced air quality.',
-    price: 49.99,
-    imageUrl: '/images/product-1.jpg' // Placeholder image
+    name: 'Oil Filter',
+    description: 'High-performance oil filter for superior engine protection.',
+    price: 0, // Price not displayed, but kept for type consistency
+    imageUrl: '/images/oil-filter.jpg' // Placeholder image for Oil Filter
   },
   {
     id: 2,
-    name: 'Turfio TCF-2020',
-    description: 'Advanced multi-layer filtration for ultimate comfort.',
-    price: 59.99,
-    imageUrl: '/images/product-2.jpg' // Placeholder image
+    name: 'Transmission Filter',
+    description: 'Ensures smooth transmission operation and extends lifespan.',
+    price: 0,
+    imageUrl: '/images/transmission-filter.jpg' // Placeholder image for Transmission Filter
   },
   {
     id: 3,
-    name: 'Turfio TCF-3030',
-    description: 'Easy installation, perfect fit for most vehicles.',
-    price: 69.99,
-    imageUrl: '/images/product-3.jpg' // Placeholder image
+    name: 'Air Filter',
+    description: 'Optimizes engine airflow for improved performance and fuel efficiency.',
+    price: 0,
+    imageUrl: '/images/air-filter.jpg' // Placeholder image for Air Filter
+  },
+  {
+    id: 4,
+    name: 'Cabin Air Filter',
+    description: 'Traps dust, pollen, and odors for a cleaner cabin environment.',
+    price: 0,
+    imageUrl: '/images/cabin-air-filter.jpg' // Placeholder image for Cabin Air Filter
   }
 ]);

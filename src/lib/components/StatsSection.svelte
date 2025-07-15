@@ -12,6 +12,7 @@
   onMount(() => {
     observeElementVisibility(element, () => {
       visible = true;
+      // Set the target values for the spring animation
       customers.set(20000);
       products.set(2000);
     });

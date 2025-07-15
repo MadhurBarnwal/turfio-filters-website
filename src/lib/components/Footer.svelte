@@ -23,7 +23,7 @@
       <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
       </a>
-      <a href="https://www.instagram.com/yourpage" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/turfiofilters" target="_blank" rel="noopener noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
       </a>
       <a href="https://www.twitter.com/yourpage" target="_blank" rel="noopener noreferrer">

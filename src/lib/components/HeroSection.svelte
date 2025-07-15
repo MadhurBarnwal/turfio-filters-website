@@ -13,14 +13,14 @@
   });
 
   // Placeholder for product image URL
-  const productImage = '/images/hero-product.jpg'; // Assuming an image will be placed in static/images/
+  const productImage = '/images/filters.jpg'; // Using the new filters image
 </script>
 
 <section class="hero-section" bind:this={element}>
   {#if visible}
     <div class="animated-top-section">
-      <div class="glowing-line"></div>
-      <p>Experience the Turfio Difference</p>
+      <div class="glowing-shimmer"></div>
+      <p>Precision Engineered for Peak Performance</p>
     </div>
     <div class="hero-content">
       <h1 transition:fade={{ duration: 500 }}>Breathe Pure Air. Drive in Comfort.</h1>
@@ -62,25 +62,23 @@
     overflow: hidden;
   }
 
-  .glowing-line {
+  .glowing-shimmer {
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
+    left: -150%; /* Start further left */
+    width: 50%; /* Shorter shimmer */
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    animation: glow 2s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); /* More subtle glow */
+    transform: skewX(-20deg); /* Angled shimmer */
+    animation: shimmer 2s infinite linear; /* Slower, continuous shimmer */
   }
 
-  @keyframes glow {
+  @keyframes shimmer {
     0% {
-      left: -100%;
-    }
-    50% {
-      left: 100%;
+      left: -120%;
     }
     100% {
-      left: -100%;
+      left: 120%;
     }
   }
 
@@ -95,20 +93,22 @@
     margin-bottom: 20px;
     line-height: 1.2;
     color: #00A99D; /* Primary teal */
-    font-family: 'Georgia', serif; /* Example of a better font */
+    font-family: 'Roboto Condensed', sans-serif; /* Industrial font */
+    font-weight: 700; /* Bold */
+    letter-spacing: 2px; /* More industrial feel */
   }
 
   .hero-content p {
     font-size: 1.5rem; /* Larger sub-headline */
     margin-bottom: 40px;
     line-height: 1.6;
-    font-family: 'Verdana', sans-serif; /* Example of a better font */
+    font-family: 'Lato', sans-serif; /* Clean, professional sans-serif */
   }
 
   .cta-button {
     display: inline-block;
     padding: 18px 35px; /* Larger button */
-    background-color: #ff6f61; /* Accent color (coral) */
+    background-color: #00A99D; /* Primary teal */
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1.3rem; /* Larger button text */
@@ -117,13 +117,23 @@
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 169, 157, 0.6); /* Initial glow matching primary teal */
+    animation: pulse-glow 2s infinite alternate; /* Pulsing glow animation */
   }
 
   .cta-button:hover {
-    background-color: #e05a4d; /* Darker coral on hover */
+    background-color: #008c80; /* Darker teal on hover */
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 25px rgba(0, 169, 157, 0.8); /* Stronger glow on hover */
+  }
+
+  @keyframes pulse-glow {
+    0% {
+      box-shadow: 0 0 15px rgba(0, 169, 157, 0.6);
+    }
+    100% {
+      box-shadow: 0 0 25px rgba(0, 169, 157, 0.9);
+    }
   }
 
   .hero-image {
@@ -138,7 +148,8 @@
     max-width: 90%; /* Slightly larger image */
     height: auto;
     border-radius: 15px; /* More rounded corners for the image */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* More prominent shadow */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+    animation: neon-glow 1.5s infinite alternate; /* Neon glow animation */
   }
 
   /* Basic responsiveness */
@@ -173,4 +184,23 @@
       max-width: 80%;
     }
   }
-</style>
+  
+
+  @keyframes neon-glow {
+    0% {
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+    }
+    100% {
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+     }
+   }
+ 
+   @keyframes neon-glow {
+     0% {
+       box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+     }
+     100% {
+       box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+     }
+   }
+ </style>

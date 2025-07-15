@@ -31,7 +31,7 @@
 
   .product-image img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
   }
 
