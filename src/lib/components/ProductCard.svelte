@@ -1,55 +1,76 @@
 <script lang="ts">
-  let { product } = $props();
+  import { tilt } from '$lib/utils/tilt';
+  
+  // Define the type for a product
+  export let product: {
+    id: number;
+    name: string;
+    description: string;
+    imageUrl: string;
+  };
 </script>
 
-<div class="product-card">
+<div class="product-card" use:tilt={{ max: 12, perspective: 1000, scale: 1.04 }}>
   <div class="product-image">
     <img src={product.imageUrl} alt={product.name} />
   </div>
   <div class="product-info">
     <h3>{product.name}</h3>
     <p>{product.description}</p>
+    <a href={`/products/${product.id}`} class="details-link">
+      View Details →
+    </a>
   </div>
 </div>
 
 <style>
+  /* Applying the same improved glass effect here */
   .product-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(var(--glass-blur));
+    border: var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1.5px rgba(255,255,255,0.2);
+    
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    will-change: transform;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .product-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   .product-image img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-
-  .product-info {
-    padding: 20px;
-    text-align: left;
+    height: 200px;
+    object-fit: contain; /* Use contain to show the whole filter */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* Add a light background to the image itself */
+    padding: 10px;
   }
 
   .product-info h3 {
     font-size: 1.4rem;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .product-info p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #666;
-    margin-bottom: 15px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    min-height: 50px; /* Ensures cards have similar heights */
+  }
+
+  .details-link {
+    color: var(--brand-color-1);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  .details-link:hover {
+    letter-spacing: 0.5px;
+    text-decoration: none;
   }
 </style>

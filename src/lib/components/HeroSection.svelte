@@ -1,206 +1,147 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-  import { observeElementVisibility } from '$lib/utils/scrollEffects';
+  import { fade, slide } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { tilt } from '$lib/utils/tilt';
 
-  let element: HTMLElement;
-  let visible = $state(false);
+  let heroVisible = false;
 
   onMount(() => {
-    observeElementVisibility(element, () => {
-      visible = true;
-    });
+    heroVisible = true;
   });
 
-  // Placeholder for product image URL
-  const productImage = '/images/filters.jpg'; // Using the new filters image
+  const productImage = '/images/filters.jpg'; 
 </script>
 
-<section class="hero-section" bind:this={element}>
-  {#if visible}
-    <div class="animated-top-section">
-      <div class="glowing-shimmer"></div>
-      <p>Precision Engineered for Peak Performance</p>
+<section class="hero-container">
+  {#if heroVisible}
+    <!-- Text Content Glass Panel -->
+    <div class="glass-panel text-panel" use:tilt={{ max: 7, perspective: 1200, scale: 1.02 }}>
+      <div class="text-content" in:fade={{ delay: 200, duration: 500 }}>
+        <h1 in:slide={{ delay: 300, duration: 500, axis: 'y' }}>
+          Pure Air, Peak Performance.
+        </h1>
+        <p in:slide={{ delay: 500, duration: 500, axis: 'y' }}>
+          Discover Turfio's next-generation car filters. Engineered with cutting-edge technology for superior filtration and airflow.
+        </p>
+        <a href="#products" class="cta-button" in:fade={{ delay: 700, duration: 600 }}>
+          Explore Products
+        </a>
+      </div>
     </div>
-    <div class="hero-content">
-      <h1 transition:fade={{ duration: 500 }}>Breathe Pure Air. Drive in Comfort.</h1>
-      <p transition:fade={{ duration: 700, delay: 500 }}>Discover Turfio's super-capacity cabin air purifiers.</p>
-      <a href="#products" class="cta-button" transition:fade={{ duration: 900, delay: 1000 }}>
-        View Products
-      </a>
-    </div>
-    <div class="hero-image">
-      <img src={productImage} alt="Turfio Cabin Air Purifier in a luxury car" />
+    
+    <!-- Image Content Glass Panel -->
+    <div class="glass-panel image-panel" use:tilt={{ max: 10, perspective: 1200, scale: 1.04 }}>
+       <img 
+         src={productImage} 
+         alt="Turfio Cabin Air Purifier"
+         in:fade={{ delay: 400, duration: 800 }} 
+       />
     </div>
   {/if}
 </section>
 
 <style>
-  .hero-section {
-    display: flex;
-    flex-direction: column; /* Changed to column to place animated section on top */
+  .hero-container {
+    padding: 10vh 5%;
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
     align-items: center;
-    justify-content: center;
-    padding: 80px 5%; /* Responsive padding */
-    min-height: 90vh; /* Take up significant viewport height */
-    background-color: #e0f7fa; /* Lighter, "cuter" background color (light cyan) */
-    color: #333333; /* Dark charcoal text */
-    overflow: hidden; /* To contain background effects */
-    position: relative;
-    text-align: center;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
-  .animated-top-section {
-    width: 100%;
-    padding: 20px;
-    background-color: #00A99D; /* Primary teal */
-    color: #FFFFFF;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
+  /* THIS IS THE NEW, IMPROVED GLASS EFFECT */
+  .glass-panel {
+    /* Let the background colors shine through */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(var(--glass-blur));
+    border: var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    
+    /* Add an inner glow to simulate light on the edge */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1.5px rgba(255,255,255,0.2);
+
+    padding: 30px;
+    will-change: transform; /* Performance optimization */
   }
 
-  .glowing-shimmer {
-    position: absolute;
-    top: 0;
-    left: -150%; /* Start further left */
-    width: 50%; /* Shorter shimmer */
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); /* More subtle glow */
-    transform: skewX(-20deg); /* Angled shimmer */
-    animation: shimmer 2s infinite linear; /* Slower, continuous shimmer */
+  .text-panel {
+    padding: 50px;
   }
 
-  @keyframes shimmer {
-    0% {
-      left: -120%;
-    }
-    100% {
-      left: 120%;
-    }
-  }
-
-  .hero-content {
-    max-width: 800px;
-    z-index: 1; /* Ensure content is above background */
-    margin-bottom: 40px;
-  }
-
-  .hero-content h1 {
-    font-size: 4rem; /* Larger headline */
-    margin-bottom: 20px;
+  .text-content h1 {
+    font-size: 3.8rem;
     line-height: 1.2;
-    color: #00A99D; /* Primary teal */
-    font-family: 'Roboto Condensed', sans-serif; /* Industrial font */
-    font-weight: 700; /* Bold */
-    letter-spacing: 2px; /* More industrial feel */
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    font-weight: 700;
   }
 
-  .hero-content p {
-    font-size: 1.5rem; /* Larger sub-headline */
-    margin-bottom: 40px;
-    line-height: 1.6;
-    font-family: 'Lato', sans-serif; /* Clean, professional sans-serif */
+  .text-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 500px;
   }
 
   .cta-button {
     display: inline-block;
-    padding: 18px 35px; /* Larger button */
-    background-color: #00A99D; /* Primary teal */
-    color: #FFFFFF;
+    background-color: var(--brand-color-1);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 10px;
     text-decoration: none;
-    font-size: 1.3rem; /* Larger button text */
-    font-weight: bold;
-    border-radius: 30px; /* More rounded button */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 169, 157, 0.6); /* Initial glow matching primary teal */
-    animation: pulse-glow 2s infinite alternate; /* Pulsing glow animation */
-  }
-
-  .cta-button:hover {
-    background-color: #008c80; /* Darker teal on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(0, 169, 157, 0.8); /* Stronger glow on hover */
-  }
-
-  @keyframes pulse-glow {
-    0% {
-      box-shadow: 0 0 15px rgba(0, 169, 157, 0.6);
-    }
-    100% {
-      box-shadow: 0 0 25px rgba(0, 169, 157, 0.9);
-    }
-  }
-
-  .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-  }
-
-  .hero-image img {
-    max-width: 90%; /* Slightly larger image */
-    height: auto;
-    border-radius: 15px; /* More rounded corners for the image */
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
-    animation: neon-glow 1.5s infinite alternate; /* Neon glow animation */
-  }
-
-  /* Basic responsiveness */
-  @media (max-width: 768px) {
-    .hero-section {
-      padding: 40px 5%;
-      min-height: auto;
-    }
-
-    .animated-top-section {
-      margin-bottom: 20px;
-    }
-
-    .hero-content {
-      margin-bottom: 30px;
-    }
-
-    .hero-content h1 {
-      font-size: 3rem;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-    }
-
-    .cta-button {
-      padding: 15px 30px;
-      font-size: 1.1rem;
-    }
-
-    .hero-image img {
-      max-width: 80%;
-    }
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px -5px var(--glow-color);
   }
   
+  .cta-button:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 30px -5px var(--glow-color);
+    text-decoration: none;
+  }
+  
+  .image-panel {
+    padding: 30px;
+  }
+  .image-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px; /* Soften image corners inside the panel */
+  }
 
-  @keyframes neon-glow {
-    0% {
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .hero-container {
+      grid-template-columns: 1fr; /* Stack on smaller screens */
+      text-align: center;
+      padding: 80px 5%;
+      gap: 30px;
     }
-    100% {
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
-     }
-   }
- 
-   @keyframes neon-glow {
-     0% {
-       box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
-     }
-     100% {
-       box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
-     }
-   }
- </style>
+    
+    .image-panel {
+      order: -1; /* Move image to the top on mobile */
+      padding: 20px;
+    }
+
+    .text-content p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .text-content h1 { font-size: 3rem; }
+    .text-panel { padding: 40px; }
+  }
+
+  @media (max-width: 480px) {
+    .text-content h1 { font-size: 2.5rem; }
+    .glass-panel { padding: 25px; }
+    .text-panel { padding: 30px; }
+  }
+</style>

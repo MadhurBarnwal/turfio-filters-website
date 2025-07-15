@@ -7,6 +7,8 @@
   import TechnologyAboutSection from '$lib/components/TechnologyAboutSection.svelte';
   import TestimonialsSection from '$lib/components/TestimonialsSection.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import FaqSection from '$lib/components/FaqSection.svelte';
+
 </script>
 
 <Header />
@@ -15,6 +17,7 @@
   <HeroSection />
   <StatsSection />
   <ProductShowcase />
+  <FaqSection />
   <WhyTurfioSection />
   <TechnologyAboutSection />
   <TestimonialsSection />
