@@ -1,5 +1,7 @@
 <script lang="ts">
+  import Header from '$lib/components/Header.svelte';
   import HeroSection from '$lib/components/HeroSection.svelte';
+  import StatsSection from '$lib/components/StatsSection.svelte';
   import ProductShowcase from '$lib/components/ProductShowcase.svelte';
   import WhyTurfioSection from '$lib/components/WhyTurfioSection.svelte';
   import TechnologyAboutSection from '$lib/components/TechnologyAboutSection.svelte';
@@ -7,19 +9,28 @@
   import Footer from '$lib/components/Footer.svelte';
 </script>
 
+<Header />
+
 <main>
   <HeroSection />
+  <StatsSection />
   <ProductShowcase />
   <WhyTurfioSection />
   <TechnologyAboutSection />
   <TestimonialsSection />
-  <Footer />
 </main>
 
+<Footer />
+
 <style>
-  /* Basic global styles can go here or in a separate global CSS file */
+  :global(body) {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+
   main {
-    font-family: 'Arial', sans-serif;
-    color: #333; /* Secondary charcoal color */
+    overflow-x: hidden;
   }
 </style>

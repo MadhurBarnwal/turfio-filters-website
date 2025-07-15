@@ -13,12 +13,6 @@
       visible = true;
     });
   });
-
-  // Function to handle adding to cart (placeholder)
-  function addToCart(productId: number) {
-    console.log(`Adding product ${productId} to cart`);
-    // Implement cart logic here
-  }
 </script>
 
 <section id="products" class="product-showcase" bind:this={element}>
@@ -26,10 +20,7 @@
     <h2 transition:slide={{ duration: 500, axis: 'y', delay: 200 }}>Featured Products</h2>
     <div class="product-grid">
       {#each $products as product (product.id)}
-        <ProductCard
-          product={product}
-          on:addToCart={({ detail }) => addToCart(detail.id)}
-        />
+        <ProductCard {product} />
       {/each}
     </div>
   {/if}

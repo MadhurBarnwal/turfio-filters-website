@@ -6,24 +6,28 @@
 <footer>
   <div class="footer-content">
     <div class="footer-logo">
-      <img src={logoUrl} alt="Turfio Logo" />
+      <a href="/">
+        <img src={logoUrl} alt="Turfio Logo" />
+        <span>Turfio</span>
+      </a>
     </div>
     <nav class="footer-nav">
       <ul>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#shipping">Shipping & Returns</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="tel:+919876543210">Phone: +91 98765 43210</a></li>
       </ul>
     </nav>
     <div class="social-icons">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-        <img src="/icons/facebook.svg" alt="Facebook" />
+      <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
       </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-        <img src="/icons/instagram.svg" alt="Instagram" />
+      <a href="https://www.instagram.com/yourpage" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
       </a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-        <img src="/icons/twitter.svg" alt="Twitter" />
+      <a href="https://www.twitter.com/yourpage" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter" />
       </a>
     </div>
   </div>
@@ -49,9 +53,21 @@
     margin: 0 auto 30px;
   }
 
+  .footer-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+  }
+
   .footer-logo img {
     height: 50px; /* Adjust as needed */
-    margin-bottom: 20px;
+    margin-right: 10px;
+  }
+
+  .footer-logo span {
+    font-size: 1.8rem;
+    font-weight: bold;
   }
 
   .footer-nav ul {

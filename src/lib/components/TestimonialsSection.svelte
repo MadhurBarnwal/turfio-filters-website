@@ -5,21 +5,27 @@
   let testimonials = $state([
     {
       id: 1,
-      name: 'John Doe',
+      name: 'Priya Sharma',
       rating: 5,
-      text: 'These filters are amazing! My car has never smelled fresher.'
+      text: 'These filters are excellent! My car feels so much cleaner and fresher now. Highly recommended for dusty roads!'
     },
     {
       id: 2,
-      name: 'Jane Smith',
+      name: 'Amit Singh',
       rating: 5,
-      text: 'Easy to install and a perfect fit. Highly recommend!'
+      text: 'Very easy to install and the air quality difference is noticeable. A must-have for city driving.'
     },
     {
       id: 3,
-      name: 'Peter Jones',
+      name: 'Kavita Madaan',
       rating: 4,
-      text: 'Good quality filter, but a bit pricey.'
+      text: 'Good product, but the price is a bit on the higher side. Quality is top-notch though.'
+    },
+    {
+      id: 4,
+      name: 'Rajesh Kumar',
+      rating: 5,
+      text: 'Finally, a filter that truly works! No more dust or pollution smell in my car. Fantastic!'
     }
   ]);
 
