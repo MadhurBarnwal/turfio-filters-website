@@ -55,32 +55,44 @@
 				opacity: 0.6;
 			}
 
-			.blob-1 {
-				width: 400px;
-				height: 450px;
-				background: var(--brand-color-1);
-				top: -150px;
-				left: -100px;
-				animation: float 25s infinite alternate;
-			}
+			.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    /* This transition makes the blobs smoothly follow the mouse */
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-			.blob-2 {
-				width: 350px;
-				height: 380px;
-				background: var(--brand-color-3);
-				bottom: -100px;
-				right: -150px;
-				animation: float 30s infinite alternate;
-			}
-			
-			.blob-3 {
-				width: 250px;
-				height: 250px;
-				background: var(--brand-color-2);
-				top: 50%;
-				left: 50%;
-				animation: float 35s infinite alternate-reverse;
-			}
+		/* We are replacing the old keyframe animation with a dynamic transform */
+		.blob-1 {
+			width: 400px;
+			height: 450px;
+			background: var(--brand-color-1);
+			top: -150px;
+			left: -100px;
+			/* The blobs now move based on the --mouse-x/y variables */
+			transform: translate(calc(var(--mouse-x, 0) * -100px), calc(var(--mouse-y, 0) * -80px));
+		}
+
+		.blob-2 {
+			width: 350px;
+			height: 380px;
+			background: var(--brand-color-3);
+			bottom: -100px;
+			right: -150px;
+			transform: translate(calc(var(--mouse-x, 0) * 80px), calc(var(--mouse-y, 0) * 120px));
+		}
+
+		.blob-3 {
+			width: 250px;
+			height: 250px;
+			background: var(--brand-color-2);
+			top: 50%;
+			left: 50%;
+			transform: translate(calc(var(--mouse-x, 0) * 50px), calc(var(--mouse-y, 0) * -50px));
+		}
+
 
 			.noise-layer {
 				position: fixed;

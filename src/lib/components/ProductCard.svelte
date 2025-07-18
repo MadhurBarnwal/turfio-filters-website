@@ -1,13 +1,9 @@
 <script lang="ts">
   import { tilt } from '$lib/utils/tilt';
-  
-  // Define the type for a product
-  export let product: {
-    id: number;
-    name: string;
-    description: string;
-    imageUrl: string;
-  };
+  import type { Product } from '$lib/stores/productStore'; // Import the main Product type
+
+  // Define the type for a product using the imported interface
+  export let product: Product;
 </script>
 
 <div class="product-card" use:tilt={{ max: 12, perspective: 1000, scale: 1.04 }}>
@@ -17,9 +13,10 @@
   <div class="product-info">
     <h3>{product.name}</h3>
     <p>{product.description}</p>
-    <a href={`/products/${product.id}`} class="details-link">
-      View Details →
-    </a>
+    <!-- Inside ProductCard.svelte -->
+<a href={`/products/${product.slug}`} class="details-link">
+  View Details →
+</a>
   </div>
 </div>
 

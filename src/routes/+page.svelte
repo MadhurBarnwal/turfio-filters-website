@@ -1,29 +1,29 @@
 <script lang="ts">
-  import Header from '$lib/components/Header.svelte';
   import HeroSection from '$lib/components/HeroSection.svelte';
   import StatsSection from '$lib/components/StatsSection.svelte';
   import ProductShowcase from '$lib/components/ProductShowcase.svelte';
   import WhyTurfioSection from '$lib/components/WhyTurfioSection.svelte';
-  import TechnologyAboutSection from '$lib/components/TechnologyAboutSection.svelte';
   import TestimonialsSection from '$lib/components/TestimonialsSection.svelte';
-  import Footer from '$lib/components/Footer.svelte';
   import FaqSection from '$lib/components/FaqSection.svelte';
-
+  import TechSection from '$lib/components/TechSection.svelte';
+  import BlogSection from '$lib/components/BlogSection.svelte';
+  import AboutSection from '$lib/components/AboutSection.svelte';
 </script>
 
-<Header />
 
 <main>
   <HeroSection />
   <StatsSection />
   <ProductShowcase />
-  <FaqSection />
   <WhyTurfioSection />
-  <TechnologyAboutSection />
+  <TechSection />
+  <BlogSection />
+  <AboutSection />
   <TestimonialsSection />
+  <FaqSection />
+
 </main>
 
-<Footer />
 
 <style>
   :global(body) {

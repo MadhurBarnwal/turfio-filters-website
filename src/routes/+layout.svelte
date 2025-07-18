@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import Footer from '$lib/components/Footer.svelte';
   let mobileMenuOpen = false;
 
   function toggleMenu() {
@@ -17,10 +18,14 @@
 <header class:menu-open={mobileMenuOpen}>
   <div class="logo">
     <a href="/" on:click={closeMenu}>
-      <span class="logo-text">Turfio Filters</span>
+      <img src="/images/turfio-logo.png" alt="Turfio Filters" class="logo-image">
     </a>
   </div>
-
+<div class="catalog-button-header">
+  <a href="/catalog.pdf" target="_blank" rel="noopener noreferrer" class="catalog-button">
+    Download Catalog
+  </a>
+</div>
   <!-- Mobile Menu Toggle Button -->
   <button class="mobile-menu-toggle" on:click={toggleMenu} aria-label="Toggle menu">
     {#if mobileMenuOpen}
@@ -47,6 +52,7 @@
       <li><a href="/blog" on:click={closeMenu}>Blog</a></li>
       <li><a href="/about" on:click={closeMenu}>About</a></li>
       <li><a href="/contact" on:click={closeMenu}>Contact</a></li>
+      
     </ul>
     <div class="mobile-catalog-button-container">
 		<a href="/catalog.pdf" target="_blank" rel="noopener noreferrer" class="catalog-button">
@@ -84,10 +90,11 @@
   }
 
   /* --- Logo --- */
-  .logo-text {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-primary);
+  .logo-image {
+/* Make image size small */
+    /* Left padding */
+    padding-left: 12px;
+    height: 55px;
   }
 
   /* --- Desktop Navigation --- */
@@ -131,6 +138,8 @@
     transform: scaleX(1);
   }
 
+  
+
   /* --- CTA Button --- */
   .catalog-button {
 	  display: block;
@@ -148,6 +157,9 @@
 	  box-shadow: 0 0 25px -5px var(--glow-color);
 	  text-decoration: none;
   }
+  .catalog-button-header {
+  display: none; /* Hide on desktop */
+}
   
   /* --- Mobile Menu Specific Styles --- */
   .mobile-menu-toggle {
@@ -173,6 +185,10 @@
     .desktop-cta-container {
       display: none; /* Hide desktop button on mobile */
     }
+      .catalog-button-header {
+          display: block; /* Hide on desktop */
+        }
+
 
     nav {
       /* Mobile nav panel */
@@ -217,3 +233,9 @@
 	}
   }
 </style>
+
+<main>
+  <slot />
+</main>
+
+<Footer />
