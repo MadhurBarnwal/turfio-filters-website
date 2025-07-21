@@ -36,7 +36,7 @@
 
     <div class="stat-card" use:tilt>
       <h3>{Math.round($customers).toLocaleString()}+</h3>
-      <p>Products</p>
+      <p>Happy Customers</p>
     </div>
 
   </div>
@@ -111,6 +111,7 @@
   @media (max-width: 480px) {
     .stat-card h3 {
       font-size: 2.5rem;
+      padding: -10px;
     }
   }
 </style>

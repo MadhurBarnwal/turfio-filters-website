@@ -30,7 +30,7 @@
         <CategoryCard
           name={filterType.name}
           imageUrl={filterType.image_url}
-          link={`/products/${filterType.name.toLowerCase().replace(/ /g, '-')}`}
+          link={`/products/${filterType.name.replace(/ /g, '-')}`}
         />
       {/each}
     </div>

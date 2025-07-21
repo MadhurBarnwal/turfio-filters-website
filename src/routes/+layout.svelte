@@ -1,7 +1,21 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import Footer from '$lib/components/Footer.svelte';
+    // --- NEW: Import the type for our layout data ---
+  // --- NEW: Import the store and fetch function ---
+  import { catalogUrl, fetchCatalogUrl } from '$lib/stores/settingsStore';
+ 
   let mobileMenuOpen = false;
+  const whatsappNumber = "+918595866900";
+
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello! I'm interested in Turfio Filters.")}`;
+
+
+    // --- NEW: Fetch the URL when the layout first loads ---
+  onMount(() => {
+    fetchCatalogUrl();
+  });
 
   function toggleMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -11,6 +25,13 @@
     mobileMenuOpen = false;
   }
 </script>
+
+<svelte:head>
+  <!-- This is the DEFAULT title for your entire website -->
+  <title>Turfio Filters | Premium Automotive Air & Oil Filters</title>
+  <meta name="description" content="High-quality cabin, air, and oil filters for a wide range of vehicles. Find the perfect fit for your car at Turfio Filters." />
+</svelte:head>
+
 
 <!-- Add a class to the body to prevent scrolling when menu is open -->
 <svelte:body on:scroll={mobileMenuOpen ? e => e.preventDefault() : null} />
@@ -22,7 +43,7 @@
     </a>
   </div>
 <div class="catalog-button-header">
-  <a href="/catalog.pdf" target="_blank" rel="noopener noreferrer" class="catalog-button">
+  <a href={$catalogUrl} target="_blank" rel="noopener noreferrer" class="catalog-button">
     Download Catalog
   </a>
 </div>
@@ -55,7 +76,7 @@
       
     </ul>
     <div class="mobile-catalog-button-container">
-		<a href="/catalog.pdf" target="_blank" rel="noopener noreferrer" class="catalog-button">
+		<a href={$catalogUrl} target="_blank" rel="noopener noreferrer" class="catalog-button">
 			Download Catalog
 		</a>
 	</div>
@@ -63,7 +84,7 @@
   
   <!-- Desktop-only Catalog Button -->
   <div class="desktop-cta-container">
-	  <a href="/catalog.pdf" target="_blank" rel="noopener noreferrer" class="catalog-button">
+	  <a href={$catalogUrl} target="_blank" rel="noopener noreferrer" class="catalog-button">
 		  Download Catalog
 	  </a>
   </div>
@@ -229,13 +250,58 @@
     }
 	
     .mobile-catalog-button-container {
-		display: block;
-	}
+  display: block;
+ }
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+  }
+
+  .whatsapp-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  @media (max-width: 600px) {
+    .whatsapp-float {
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .whatsapp-icon {
+      width: 30px;
+      height: 30px;
+    }
   }
 </style>
 
 <main>
   <slot />
 </main>
+
+<a href={whatsappLink} class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <img src="/images/whatsapp.webp" alt="WhatsApp" class="whatsapp-icon">
+</a>
 
 <Footer />

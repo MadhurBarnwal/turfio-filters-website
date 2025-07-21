@@ -3,17 +3,17 @@
   import emailjs from '@emailjs/browser';
 
   // --- Real Contact Information ---
-  const address = "2778/19, Ground Floor, Bhatnagar Building, P.S. Jain Chowk, Kashmere Gate, Delhi-110006";
-  const callPhoneNumber = "+91 9582002305";
+  const address = "2778/19, P.S. Jain Chowk, Kashmere Gate, Delhi-110006";
+  const callPhoneNumber = "+91 8595866900";
   const oldCallPhoneNumber = "+91 9911116168";
-  const whatsappNumber = "8595866900";
+  const whatsappNumber = "+918595866900";
   const emailAddress = "turfiofilters@gmail.com";
 
   // --- Dynamic Links ---
   const callLink = `tel:${callPhoneNumber}`;
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello! I'm interested in Turfio Filters.")}`;
   const emailLink = `mailto:${emailAddress}`;
-  const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const googleMapsLink = `https://maps.app.goo.gl/KPQxin8nTEzWnHu16?g_st=aw`;
 
   // Form field variables
   let from_name = '';

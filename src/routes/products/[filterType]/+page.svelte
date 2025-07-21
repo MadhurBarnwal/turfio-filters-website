@@ -49,7 +49,7 @@
         <CategoryCard
           name={company.name}
           imageUrl={company.logo_url}
-          link={`/products/${$page.params.filterType}/${company.name.toLowerCase().replace(/ /g, '-')}`}
+          link={`/products/${$page.params.filterType}/${company.name.replace(/ /g, '-')}`}
         />
       {/each}
     </div>

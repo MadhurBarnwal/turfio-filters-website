@@ -10,6 +10,7 @@
     image_url: string | null;
     company_name: string | null;
     filter_type_name: string | null;
+    mrp: number | null;
   }
 
   let searchQuery = '';
@@ -47,7 +48,7 @@
   // This helper function is still needed to create the links
   const createSlug = (text: string | null) => {
     if (!text) return '';
-    return text.toLowerCase().replace(/ /g, '-');
+    return text.replace(/ /g, '-');
   }
 </script>
 
@@ -84,6 +85,9 @@
                 <div class="result-info">
                   <span class="model">{result.model} ({result.company_name})</span>
                   <span class="part-no">Part No: {result.turfio_part_no}</span>
+                  {#if result.mrp}
+                    <span class="mrp">MRP: ₹{result.mrp.toFixed(2)}</span>
+                  {/if}
                 </div>
               </a>
             </li>
@@ -128,7 +132,7 @@
     width: 100%;
     max-width: 600px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
     border: var(--glass-border);
     border-radius: 20px; /* Match container border-radius */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12), var(--glass-glow);
@@ -228,6 +232,12 @@
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
   }
+  .result-info .mrp {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+  }
 
   /* Media query for mobile devices */
   @media (max-width: 768px) {
@@ -264,7 +274,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: blur(1px); /* A darker, less transparent overlay */
+    background: blur(6px); /* A darker, less transparent overlay */
     backdrop-filter: none; /* Remove blur from the overlay */
     z-index: 1;
   }
@@ -283,7 +293,7 @@
   }
   .subtitle{
       font-size: 0.7rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
       border-radius: 8px;
   }
   
@@ -293,7 +303,7 @@
     }
     h2 {
       font-size: 1rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.25);
     }
       .search-results {
     position: absolute;

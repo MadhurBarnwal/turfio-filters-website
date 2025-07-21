@@ -3,7 +3,8 @@
   const timelineEvents = [
     { year: '1998', event: 'Initial research on particulate dynamics begins.' },
     { year: '2010', event: 'Development of the first electrostatically-charged media prototype.' },
-    { year: '2015', event: 'Turfio brand is officially launched with the Filtration Matrix core.' },
+    { year: '2012', event: 'Turfio brand is officially launched with the Filtration Matrix core.' },
+    { year: '2016', event: 'Strategic Partnership with leading automotive manufacturers.' },
     { year: '2020', event: 'Expansion into pan-India distribution network.' }
   ];
 

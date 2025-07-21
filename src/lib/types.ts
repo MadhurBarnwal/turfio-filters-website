@@ -31,3 +31,13 @@ export interface SearchResult extends Product {
   CarCompanies: CarCompany;
   FilterTypes: FilterType;
 }
+
+
+export interface DisplayCard {
+  name: string;
+  description: string;
+  imageUrl: string;
+  slug?: string;
+  href?: string;
+}
+

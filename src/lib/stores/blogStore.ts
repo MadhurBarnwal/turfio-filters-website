@@ -6,8 +6,8 @@ export interface BlogPost {
   excerpt: string;
 }
 
-export const posts = readable<BlogPost[]>([
-  {
+export const blogPostData: BlogPost[] = [
+    {
     slug: 'why-change-filter',
     title: 'The Unseen Guardian: Why Your Cabin Filter is a Health Hero',
     excerpt: 'Beyond mechanics, your cabin filter is crucial for wellness. We explore the health risks of poor cabin air quality and how...'
@@ -22,4 +22,7 @@ export const posts = readable<BlogPost[]>([
     title: '5-Minute Upgrade: A DIY Guide to Replacing Your Air Filter',
     excerpt: 'Save time and money with this simple, step-by-step guide to changing your car’s engine air filter. No special tools required...'
   }
-]);
+];
+
+
+export const posts = readable<BlogPost[]>(blogPostData);

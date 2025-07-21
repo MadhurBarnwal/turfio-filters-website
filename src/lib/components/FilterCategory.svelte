@@ -1,4 +1,4 @@
-<!-- src/lib/components/FilterCategorySection.svelte -->
+<!-- src/lib/components/FilterCategory.svelte -->
 <script lang="ts">
   import { onMount } from 'svelte';
   import { supabase } from '$lib/utils/supabase';
@@ -6,8 +6,9 @@
   import CategoryCard from '$lib/components/CategoryCard.svelte'; // We'll reuse your existing card component
   import { tilt } from '$lib/utils/tilt';
 
-  let mainFilterTypes: FilterType[] = [];
+export let mainFilterTypes: FilterType[];
   let isLoading = true;
+  
 
   onMount(async () => {
     // This logic is the same as your /products page:
@@ -27,29 +28,25 @@
     isLoading = false;
   });
 </script>
-
 <section class="category-section" use:tilt={{ max: 7, perspective: 1500, scale: 1.02 }}>
   <div class="container">
     <h2>Shop by Category</h2>
     <p class="subtitle">Find the right filter for your vehicle's needs.</p>
     
-    {#if isLoading}
-      <div class="loading-container">
-        <p>Loading categories...</p>
-      </div>
-    {:else}
-      <div class="grid-container">
-        {#each mainFilterTypes as filterType}
-          <CategoryCard
-            name={filterType.name}
-            imageUrl={filterType.image_url}
-            link={`/products/${filterType.name.toLowerCase().replace(/ /g, '-')}`}
-          />
-        {/each}
-      </div>
-    {/if}
+    <!-- THIS IS THE CORRECTED HTML -->
+    <div class="grid-container">
+      {#each mainFilterTypes as filterType}
+        <CategoryCard
+          name={filterType.name}
+          imageUrl={filterType.image_url}
+          link={`/products/${filterType.name.replace(/ /g, '-')}`}
+        />
+      {/each}
+    </div>
+
   </div>
 </section>
+
 
 <style>
   .category-section {
@@ -83,11 +80,5 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
   }
-  .loading-container {
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-  }
+
 </style>

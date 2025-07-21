@@ -9,18 +9,20 @@
   import AboutSection from '$lib/components/AboutSection.svelte';
   import Search from '$lib/components/Search.svelte';
   import FilterCategory from '$lib/components/FilterCategory.svelte';
+    import type { PageData } from './$types';
+
+    export let data: PageData; 
 </script>
 
 
 <main>
+  <Search />
   <HeroSection />
-    <Search />
-
   <StatsSection />
   <WhyTurfioSection />
   <TechSection />
-  <FilterCategory />
-  <BlogSection />
+<FilterCategory mainFilterTypes={data.mainFilterTypes} />  
+<BlogSection />
   <AboutSection />
   <TestimonialsSection />
   <FaqSection />
