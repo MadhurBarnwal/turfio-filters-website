@@ -293,6 +293,30 @@
       width: 30px;
       height: 30px;
     }
+     nav {
+      /* Mobile nav panel */
+      position: fixed;
+      top: -60px;
+      left: 0;
+      width: 80%;
+      height: 100vh;
+      
+      /* Glass effect for the panel */
+      background: rgba(237, 204, 204, 0.95);
+      border-right: var(--glass-border);
+      backdrop-filter: blur(2px);
+
+      /* Layout */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      /* Hide/show animation */
+      transform: translateX(-105%);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
   }
 </style>
 
