@@ -7,7 +7,7 @@
 
   // --- WhatsApp Integration ---
   // Use the WhatsApp number from your footer, including the country code (e.g., 91 for India)
-  const whatsappNumber = "8595866900";
+  const whatsappNumber = "+918595866900";
 
   // This is a reactive statement. It automatically creates the correct WhatsApp link
   // whenever the 'product' prop is available.

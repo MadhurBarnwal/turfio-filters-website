@@ -65,7 +65,7 @@
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     
-    padding: 30px;
+    padding: 25px;
     text-align: center;
     will-change: transform;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

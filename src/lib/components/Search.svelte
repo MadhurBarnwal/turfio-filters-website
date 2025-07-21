@@ -167,7 +167,8 @@
   input[type="text"] {
     width: 100%;
     padding: 16px 20px 16px 55px;
-    font-size: 1.1rem;    display: flex;
+    font-size: 1.1rem;    
+    display: flex;
 
     font-family: var(--font-main);
     color: #ffffff;
@@ -285,7 +286,7 @@
     font-size: 0.8rem;    display: flex;
     font-family: var(--font-main);
     color: #ffffff;
-    background: var(--glass-bg);
+    background: rgba(0, 0, 0, 0.4);
     border: var(--glass-border);
     border-radius: 12px;
     backdrop-filter: blur(var(--glass-blur));
