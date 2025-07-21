@@ -5,11 +5,12 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 		%sveltekit.head%
 		<style>
 				:root {
 	--glass-bg: rgba(255, 255, 255, 0.2);  /* EVEN MORE transparent */
-	--glass-blur: 20px; /* EVEN MORE blur */
+	--glass-blur: 20px; 
 	--glass-border: 1px solid rgba(255, 255, 255, 0.3); /* Brighter border */
 	--glow-color: #ff6f61;
 	--text-primary: #1a1a2e;
@@ -48,18 +49,11 @@
 				overflow: hidden;
 			}
 
-			.blob {
-				position: absolute;
-				border-radius: 50%;
-				filter: blur(80px);
-				opacity: 0.6;
-			}
-
+		
 			.blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
+    filter: blur(70px);
     /* This transition makes the blobs smoothly follow the mouse */
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -68,9 +62,11 @@
 		.blob-1 {
 			width: 400px;
 			height: 450px;
-			background: var(--brand-color-1);
-			top: -150px;
+			background: var(--brand-color-3);
+			top: 50px;
 			left: -100px;
+			    opacity: 0.6;
+
 			/* The blobs now move based on the --mouse-x/y variables */
 			transform: translate(calc(var(--mouse-x, 0) * -100px), calc(var(--mouse-y, 0) * -80px));
 		}
@@ -78,9 +74,11 @@
 		.blob-2 {
 			width: 350px;
 			height: 380px;
-			background: var(--brand-color-3);
+			background: var(--brand-color-1);
 			bottom: -100px;
 			right: -150px;
+			    opacity: 0.6;
+
 			transform: translate(calc(var(--mouse-x, 0) * 80px), calc(var(--mouse-y, 0) * 120px));
 		}
 
@@ -89,6 +87,8 @@
 			height: 250px;
 			background: var(--brand-color-2);
 			top: 50%;
+			    opacity: 0.6;
+
 			left: 50%;
 			transform: translate(calc(var(--mouse-x, 0) * 50px), calc(var(--mouse-y, 0) * -50px));
 		}
@@ -131,12 +131,14 @@
 		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover">
-				<div class="background-container">
+		
+		<div class="background-container">
 			<div class="blob blob-1"></div>
 			<div class="blob blob-2"></div>
 			<div class="blob blob-3"></div>
 		</div>
 		<div class="noise-layer"></div>
 		<div style="display: contents">%sveltekit.body%</div>
+
 	</body>
 </html>

@@ -239,6 +239,21 @@
       align-items: center;
       
     }
+     .hero-image-wrapper {
+    display: flex;
+    align-items: stretch; /* Match panel height */
+    padding: 1px 6px;
+
+  }
+
+  .hero-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 60px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+  }
   }
 
 </style>

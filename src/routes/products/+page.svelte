@@ -1,55 +1,51 @@
+<!-- src/routes/products/+page.svelte -->
 <script lang="ts">
-  import { products } from '$lib/stores/productStore';
-  import ProductCard from '$lib/components/ProductCard.svelte';
-  import { fade, slide } from 'svelte/transition';
+  import { onMount } from 'svelte';
+  import { supabase } from '$lib/utils/supabase';
+  import type { FilterType } from '$lib/types';
+  import CategoryCard from '$lib/components/CategoryCard.svelte';
+
+  let mainFilterTypes: FilterType[] = [];
+  let isLoading = true;
+
+  onMount(async () => {
+    const { data, error } = await supabase
+      .from('FilterTypes')
+      .select('*')
+      .is('parent_id', null); // Correctly fetches only parent categories
+
+    if (data) mainFilterTypes = data;
+    if (error) console.error('Error fetching main categories:', error);
+    isLoading = false;
+  });
 </script>
 
-<div class="catalog-container">
-  <div class="header" in:fade={{duration: 500}}>
-    <h1>Complete Product Matrix</h1>
-    <p>Explore the full range of Turfio's advanced filtration solutions.</p>
-  </div>
-  
-  <div class="product-grid">
-    {#each $products as product, i (product.id)}
-      <div in:slide|fade={{ delay: 100 + i * 80, duration: 400 }}>
-        <ProductCard {product} />
-      </div>
-    {/each}
-  </div>
-</div>
+<section class="page-container">
+  <h2>Select a Filter Type</h2>
+  {#if isLoading}
+    <p>Loading categories...</p>
+  {:else}
+    <div class="grid-container">
+      {#each mainFilterTypes as filterType}
+        <CategoryCard
+          name={filterType.name}
+          imageUrl={filterType.image_url}
+          link={`/products/${filterType.name.toLowerCase().replace(/ /g, '-')}`}
+        />
+      {/each}
+    </div>
+  {/if}
+</section>
 
 <style>
-  .catalog-container {
-    padding: 100px 5%;
-    min-height: 100vh;
+  .page-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
   }
-
-  .header {
-    text-align: center;
-    margin-bottom: 60px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .header h1 {
-    font-size: 3rem;
-    color: var(--text-primary);
-    line-height: 1.2;
-  }
-
-  .header p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-top: 15px;
-  }
-
-  .product-grid {
+  .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
   }
 </style>

@@ -186,32 +186,32 @@
       display: none; /* Hide desktop button on mobile */
     }
       .catalog-button-header {
-          display: block; /* Hide on desktop */
+          display: none; /* Hide on desktop */
         }
 
 
     nav {
       /* Mobile nav panel */
       position: fixed;
-      top: 0;
-      right: 0;
+      top: -60px;
+      left: 0;
       width: 80%;
       height: 100vh;
       
       /* Glass effect for the panel */
       background: var(--glass-bg);
       backdrop-filter: blur(var(--glass-blur));
-      border-left: var(--glass-border);
+      border-right: var(--glass-border);
 
       /* Layout */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 10px;
 
       /* Hide/show animation */
-      transform: translateX(100%);
+      transform: translateX(-100%);
       transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
     nav.open {
@@ -225,7 +225,7 @@
     }
 
     nav a {
-      font-size: 1.5rem; /* Larger text for mobile menu */
+      font-size: 1.2rem; /* Larger text for mobile menu */
     }
 	
     .mobile-catalog-button-container {

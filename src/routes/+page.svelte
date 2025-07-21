@@ -1,22 +1,25 @@
 <script lang="ts">
   import HeroSection from '$lib/components/HeroSection.svelte';
   import StatsSection from '$lib/components/StatsSection.svelte';
-  import ProductShowcase from '$lib/components/ProductShowcase.svelte';
   import WhyTurfioSection from '$lib/components/WhyTurfioSection.svelte';
   import TestimonialsSection from '$lib/components/TestimonialsSection.svelte';
   import FaqSection from '$lib/components/FaqSection.svelte';
   import TechSection from '$lib/components/TechSection.svelte';
   import BlogSection from '$lib/components/BlogSection.svelte';
   import AboutSection from '$lib/components/AboutSection.svelte';
+  import Search from '$lib/components/Search.svelte';
+  import FilterCategory from '$lib/components/FilterCategory.svelte';
 </script>
 
 
 <main>
   <HeroSection />
+    <Search />
+
   <StatsSection />
-  <ProductShowcase />
   <WhyTurfioSection />
   <TechSection />
+  <FilterCategory />
   <BlogSection />
   <AboutSection />
   <TestimonialsSection />

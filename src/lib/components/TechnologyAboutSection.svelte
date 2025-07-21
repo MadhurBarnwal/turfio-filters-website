@@ -26,7 +26,7 @@
       </div>
       <div class="animation-placeholder" transition:fade={{ duration: 500, delay: 400 }}>
         <!-- Placeholder for the exploded-view animation -->
-        <img src="/images/filter_about.jpg" alt="Turfio Filters" class="filters-image" />
+        <img src="/images/filter_abour.png" alt="Turfio Filters" class="filters-image" />
       </div>
     </div>
   {/if}

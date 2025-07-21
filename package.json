@@ -25,6 +25,9 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"@emailjs/browser": "^4.4.1",
+		"@supabase/supabase-js": "^2.52.0",
+		"emailjs-com": "^3.2.0",
 		"three": "^0.178.0",
 		"three-globe": "^2.43.0"
 	}

@@ -1,9 +1,11 @@
 <script lang="ts">
   import { tilt } from '$lib/utils/tilt';
-  import type { Product } from '$lib/stores/productStore'; // Import the main Product type
+  import type { DisplayCard } from '$lib/types'; // Import our new type
 
-  // Define the type for a product using the imported interface
-  export let product: Product;
+  export let product: DisplayCard;
+
+  // Determine the link based on whether a slug or href is provided
+  const link = product.slug ? `/products/${product.slug}` : product.href;
 </script>
 
 <div class="product-card" use:tilt={{ max: 12, perspective: 1000, scale: 1.04 }}>
@@ -13,15 +15,16 @@
   <div class="product-info">
     <h3>{product.name}</h3>
     <p>{product.description}</p>
-    <!-- Inside ProductCard.svelte -->
-<a href={`/products/${product.slug}`} class="details-link">
-  View Details →
-</a>
+    {#if link}
+      <a href={link} class="details-link">
+        View Details →
+      </a>
+    {/if}
   </div>
 </div>
 
 <style>
-  /* Applying the same improved glass effect here */
+  /* STYLES REMAIN THE SAME */
   .product-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(var(--glass-blur));
@@ -39,10 +42,10 @@
   .product-image img {
     width: 100%;
     height: 200px;
-    object-fit: contain; /* Use contain to show the whole filter */
+    object-fit: contain;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* Add a light background to the image itself */
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 10px;
   }
 
@@ -57,7 +60,7 @@
     line-height: 1.6;
     color: var(--text-secondary);
     margin-bottom: 20px;
-    min-height: 50px; /* Ensures cards have similar heights */
+    min-height: 50px;
   }
 
   .details-link {

@@ -21,6 +21,18 @@
     <p>We operate at the intersection of material science, fluid dynamics, and aerospace-grade engineering to redefine vehicular air quality.</p>
   </div>
   
+  <!-- Section for Video -->
+  <section class="video-section">
+    <h2 class="section-title">See Our Technology in Action</h2>
+    <div class="video-container">
+      <video controls class="vertical-video" title="Turfio Technology in Action">
+        <source src="/videos/turfio_vertical_video.mp4" type="video/mp4">
+        <track kind="captions" src="/videos/turfio_vertical_video.vtt" srclang="en" label="English" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
   <!-- Section 2: The "Doctrine" with Icons -->
   <section class="doctrine-section">
     <h2 class="section-title">Our Operational Doctrine</h2>
@@ -73,6 +85,24 @@
   .header p { font-size: 1.2rem; color: var(--text-secondary); margin-top: 15px; }
 
   .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; color: var(--text-primary); }
+
+  /* --- Video Section --- */
+  .video-section { margin-bottom: 80px; text-align: center; }
+  .video-container {
+    max-width: 400px; /* Constrain width for vertical video */
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(var(--glass-blur));
+    border: var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12), var(--glass-glow);
+    overflow: hidden;
+  }
+  .vertical-video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   /* --- Doctrine Section --- */
   .doctrine-section { margin-bottom: 80px; }
